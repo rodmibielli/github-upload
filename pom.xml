@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.rodmibielli.rest</groupId>
+  <artifactId>cached-rest-client</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>cached-rest-client</name>
+  <description>A simple cached-rest-client</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <spring.version>5.3.5</spring.version>
+    <junit.jupiter.version>5.7.1</junit.jupiter.version>
+  </properties>
+
+  <dependencies>
+  
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-web</artifactId>
+	    <version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+	 <groupId>javax.cache</groupId>
+	 <artifactId>cache-api</artifactId>
+	 <version>1.1.1</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.hamcrest</groupId>
+	    <artifactId>hamcrest-core</artifactId>
+	    <version>2.2</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-engine</artifactId>
+	    <version>${junit.jupiter.version}</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-params</artifactId>
+	    <version>${junit.jupiter.version}</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-test</artifactId>
+	    <version>${spring.version}</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-junit-jupiter</artifactId>
+	    <version>3.8.0</version>
+	    <scope>test</scope>
+	</dependency>
+    
+	<dependency>
+    	<groupId>org.assertj</groupId>
+	    <artifactId>assertj-core</artifactId>
+	    <version>3.19.0</version>
+	    <scope>test</scope>
+	</dependency>
+    
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-jcl</artifactId>
+	    <version>2.14.1</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.14.1</version>
+	</dependency>
+    
+  </dependencies>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+		<plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+	      <dependencies>
+	        <dependency>
+	             <groupId>org.junit.platform</groupId>
+	             <artifactId>junit-platform-surefire-provider</artifactId>
+	             <version>1.3.2</version>
+	         </dependency>
+	       </dependencies>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+		<plugin>
+		<groupId>net.revelc.code.formatter</groupId>
+		<artifactId>formatter-maven-plugin</artifactId>
+		<executions>
+		    <execution>
+		        <goals>
+		            <goal>format</goal>
+		        </goals>
+		        <configuration>
+		            <configFile>eclipse-java-google-style.xml</configFile>
+		            <encoding>UTF-8</encoding>
+		        </configuration>
+		    </execution>
+		</executions>
+		</plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+</project>

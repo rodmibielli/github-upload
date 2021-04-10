@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+	<Appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="org.apache.http.client" level="debug" />
+		<Logger name="org.springframework.web.client" level="debug" />
+		<Logger name="org.springframework" level="info" />
+		<Root level="debug">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+	</Loggers>
+
+</Configuration>

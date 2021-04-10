@@ -70,7 +70,7 @@ public class CachingHttpRequestFactory implements ClientHttpRequestFactory {
 
         synchronized (cache) {
             if (isCacheableRequest(method) && cache.containsKey(uri)) {
-                log.info("Setting header eTag:" + cache.get(uri).getKey().toString());
+                log.debug("Setting header eTag:" + cache.get(uri).getKey().toString());
                 request.getHeaders().add(IF_NONE_MATCH_HEADER, cache.get(uri).getKey().toString());
             }
         }
@@ -185,7 +185,7 @@ public class CachingHttpRequestFactory implements ClientHttpRequestFactory {
 
             HttpHeaders responseHeaders = response.getHeaders();
 
-            log.info("Response status: " + response.getStatusCode() + " with headers: " + responseHeaders);
+            log.debug("Response status: " + response.getStatusCode() + " with headers: " + responseHeaders);
 
             boolean isNotModified = NOT_MODIFIED.equals(response.getStatusCode());
 

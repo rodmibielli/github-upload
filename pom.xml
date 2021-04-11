@@ -16,6 +16,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <maven.compiler.target>1.8</maven.compiler.target>
     <spring.version>5.3.5</spring.version>
     <junit.jupiter.version>5.7.1</junit.jupiter.version>
+    <log4j.version>2.14.1</log4j.version>
+    <cache-api.version>1.1.1</cache-api.version>
+    <hamcrest.version>2.2</hamcrest.version>
   </properties>
 
   <dependencies>
@@ -29,13 +32,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<dependency>
 	 <groupId>javax.cache</groupId>
 	 <artifactId>cache-api</artifactId>
-	 <version>1.1.1</version>
+	 <version>${cache-api.version}</version>
 	</dependency>
 	
 	<dependency>
 	    <groupId>org.hamcrest</groupId>
 	    <artifactId>hamcrest-core</artifactId>
-	    <version>2.2</version>
+	    <version>${hamcrest.version}</version>
 	    <scope>test</scope>
 	</dependency>
 	
@@ -73,17 +76,19 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	    <version>3.19.0</version>
 	    <scope>test</scope>
 	</dependency>
-    
+	
 	<dependency>
 	    <groupId>org.apache.logging.log4j</groupId>
 	    <artifactId>log4j-jcl</artifactId>
-	    <version>2.14.1</version>
+	    <version>${log4j.version}</version>
+	    <scope>test</scope>
 	</dependency>
 	
 	<dependency>
 	    <groupId>org.apache.logging.log4j</groupId>
 	    <artifactId>log4j-core</artifactId>
-	    <version>2.14.1</version>
+	    <version>${log4j.version}</version>
+	    <scope>test</scope>
 	</dependency>
     
   </dependencies>

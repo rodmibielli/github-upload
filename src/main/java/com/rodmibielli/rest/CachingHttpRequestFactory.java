@@ -26,6 +26,7 @@ import org.springframework.http.client.AbstractClientHttpRequest;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 
 /**
  * Wrapps a {@link ClientHttpRequestFactory} and applies caching behaviour to all created {@link ClientHttpRequest}
@@ -46,6 +47,10 @@ public class CachingHttpRequestFactory implements ClientHttpRequestFactory {
 
     private static final Log log = LogFactory.getLog(CachingHttpRequestFactory.class);
 
+    public CachingHttpRequestFactory(Cache<URI, AbstractMap.SimpleEntry> cache) {
+    	this(new SimpleClientHttpRequestFactory(),cache);
+    }
+    
     public CachingHttpRequestFactory(ClientHttpRequestFactory delegate, Cache<URI, AbstractMap.SimpleEntry> cache) {
 
         this.delegate = delegate;
@@ -70,7 +75,7 @@ public class CachingHttpRequestFactory implements ClientHttpRequestFactory {
 
         synchronized (cache) {
             if (isCacheableRequest(method) && cache.containsKey(uri)) {
-                log.info("Setting header eTag:" + cache.get(uri).getKey().toString());
+                log.debug("Setting header eTag:" + cache.get(uri).getKey().toString());
                 request.getHeaders().add(IF_NONE_MATCH_HEADER, cache.get(uri).getKey().toString());
             }
         }
@@ -185,7 +190,7 @@ public class CachingHttpRequestFactory implements ClientHttpRequestFactory {
 
             HttpHeaders responseHeaders = response.getHeaders();
 
-            log.info("Response status: " + response.getStatusCode() + " with headers: " + responseHeaders);
+            log.debug("Response status: " + response.getStatusCode() + " with headers: " + responseHeaders);
 
             boolean isNotModified = NOT_MODIFIED.equals(response.getStatusCode());
 
